@@ -1,7 +1,20 @@
 # Pirates of the RAG
 **Adaptively Attacking LLMs to Leak Knowledge Bases**
-
 > *Accepted at European Conference on Artificial Intelligence (ECAI) 2025*
+> 
+**Authors**  
+<p align='center' style="text-align:center;font-size:1em;">
+    <a href="https://collectionless.ai/post/christian_dimaio/">Christian Di Maio</a>&nbsp;,&nbsp;
+    <a>Cristian Cosci</a>&nbsp;,&nbsp;
+    <a href="https://scholar.google.com/citations?user=kZFskCoAAAAJ&hl=en">Marco Maggini</a>&nbsp;&nbsp;
+    <a href="https://scholar.google.com/citations?user=9a1nVKwAAAAJ&hl=en">Valentina Poggioni</a>&nbsp;&nbsp;
+    <a href="https://collectionless.ai/post/a-stefano_melacci/">Stefano Melacci</a>&nbsp;&nbsp;
+    <br/> 
+  University of Pisa (Italy), University of Siena (Italy), University of Perugia (Italy)
+  <br/> 
+</p>
+
+
 
 [![ECAI 2025](https://img.shields.io/badge/ECAI-2025-blue)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -11,7 +24,7 @@
 This repository provides the official implementation of our paper: **"Pirates of the RAG: Adaptively Attacking LLMs to Leak Knowledge Bases"**. We present a novel, black‑box, adaptive, and fully automated attack against Retrieval‑Augmented Generation (RAG) systems, demonstrating how to extract private knowledge-base contents via relevance‑driven query crafting.
 
 <p align="center">
-  <img src="https://github.com/gnekt/PiratesOfTheRAG/imgs/6e4eca81.png" alt="Attack Overview" width="100%">
+  <img src="/imgs/6e4eca81.png" alt="Attack Overview" width="80%">
 </p>
 
 ## 📖 Table of Contents
@@ -19,6 +32,7 @@ This repository provides the official implementation of our paper: **"Pirates of
 - [Pirates of the RAG](#pirates-of-the-rag)
   - [📖 Table of Contents](#-table-of-contents)
   - [🔑 Key Features](#-key-features)
+  - [Algorithm: Pirates of the RAG](#algorithm-pirates-of-the-rag)
   - [🛠️ Prerequisites](#️-prerequisites)
   - [💾 Installation](#-installation)
   - [🗄️ Preparing Knowledge Bases](#️-preparing-knowledge-bases)
@@ -42,6 +56,61 @@ This repository provides the official implementation of our paper: **"Pirates of
 * **Open‑Source & Locally Runnable**: Powered by consumer‑grade open models (e.g., Llama 3.2 1B) and embedder, no proprietary APIs.
 * **Relevance‑Based Anchor Mechanism**: Uses dynamically updated topic anchors to guide exploration of hidden KB chunks.
 * **Proven Effectiveness**: Outperforms existing extraction methods across multiple RAG configurations.
+
+<details>
+
+## Algorithm: Pirates of the RAG
+
+```pseudo
+# Inputs:
+#   f*             — LLM
+#   e*             — text encoder
+#   sim            — similarity fn
+#   α₁, α₂         — similarity thresholds
+#   C              — injection commands
+#   a              — initial anchor
+#   β > 0          — initial relevance
+#   n ≥ 1          — number of anchors to sample
+
+# Initialization
+t ← 0
+A₀ ← { a }
+R₀ ← { β }
+K*₀ ← ∅
+
+# Attack loop
+while max(R_t) > 0 do
+  t ← t + 1
+
+  ## 1. Sample anchors by relevance
+  Â ← sample(A_t, R_t, n)
+
+  ## 2. Craft and inject queries until we get at least one response chunk
+  q′ ← generate_base_query(Â, f*)
+  S ← ∅
+  while S = ∅ do
+    q ← inject(q′, next(C))
+    y ← f(q)
+    S ← parse(y)
+  end while
+
+  ## 3. Filter out duplicates and accumulate new chunks
+  Ŝ ← duplicates(S, K*ₜ, e*, sim, α₁)
+  K*ₜ₊₁ ← K*ₜ ∪ (S \ Ŝ)
+
+  ## 4. Extract new anchors and dedupe
+  A_new ← extract_anchors(S \ Ŝ, f*)
+  Ã ← A_new \ duplicates(A_new, Aₜ, e*, sim, α₂)
+  Aₜ₊₁ ← Aₜ ∪ Ã
+
+  ## 5. Update relevance scores
+  Γ ← compute_penalties(Ŝ, Aₜ, e*, sim)
+  Ṽ ← extract_anchors(Ŝ, f*)
+  Rₜ₊₁ ← update_relevances(Rₜ, Ã, Ṽ \ Ã, Γ)
+end while
+```
+
+</details>
 
 ---
 
@@ -187,12 +256,11 @@ Safety statistics will be stored in the corresponding experiment directory.
 If you use this work, please cite our paper:
 
 ```bibtex
-@inproceedings{pirates-of-the-rag-2025,
-  title={Pirates of the RAG: Adaptively Attacking LLMs to Leak Knowledge Bases},
+@article{di2024pirates,
+  title={Pirates of the rag: Adaptively attacking llms to leak knowledge bases},
   author={Di Maio, Christian and Cosci, Cristian and Maggini, Marco and Poggioni, Valentina and Melacci, Stefano},
-  booktitle={Proceedings of the European Conference on Artificial Intelligence (ECAI)},
-  year={2025},
-  url={https://arxiv.org/abs/your-paper-link-here}
+  journal={arXiv preprint arXiv:2412.18295},
+  year={2024}
 }
 ```
 
