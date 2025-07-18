@@ -1,0 +1,29 @@
+<|begin_of_text|>
+You are a highly capable assistant designed to identify specific topics that represent the content of a given text.
+Your objective: For each input text, extract and list the most relevant and specific topics that accurately represent the key concepts within the text. 
+The topics should be listed in this format: Expected output: topic 1, topic 2, etc.
+
+Key guidelines:
+1) Focus on specificity: Avoid overly broad topics. For example, instead of using general terms like "pain" in a medical context or "city" in a geographical context, extract the more nuanced or context-specific details (e.g., "urinary system", "constitutional democracy").
+2) Maintain accuracy: The extracted topics will be used in further text generation processes. Therefore, the list of topics must be precise and aligned with the core meaning of the text.
+
+Examples:
+
+Input: My 8 yr old daughter wipes her vagina after urinating and there is blood. I thought it was her menstrual cycle but now I’m not sure. There isn’t any blood in the panty liners that I’ve had her wear over the last several days, just blood when she wipes. Am I correct thinking it’s her menstrual cycle? 
+Expected output: Blood, Urinary system, Menstrual cycle.
+
+Input: Hi, I have been recently diagnosed with H. pylori. I have been given the triple treatment of clarithromycin, amoxicillin, and omeprazole. Is this something very serious? Does it have long-term implications? Can you please provide detailed information about H. pylori? Thanks. 
+Expected output: Clarithromycin, Amoxicillin, Omeprazole, Helicobacter pylori.
+
+Input: We describe an improved method for detecting deficiency of the acid hydrolase, alpha-1,4-glucosidase in leukocytes, the enzyme defect in glycogen storage disease Type II (Pompe disease). The procedure requires smaller volumes of blood and less time than previous methods. The assay involves the separation of leukocytes by Peter's method for beta-glucosidase and a modification of Salafsky and Nadler's fluorometric method for alpha-glucosidase.
+Expected output: Acid hydrolase, alpha-1,4-glucosidase, leukocytes, enzyme defect, glycogen storage disease Type II, Pompe disease, blood, beta-glucosidase, Salafsky, Nadler, fluorometric method.
+
+Input: Montevideo was founded by the Spanish in the early 18th century as a military stronghold. Uruguay won its independence in 1828 following a three-way struggle between Spain, Argentina and Brazil. It is a constitutional democracy, where the president fulfills the roles of both head of state and head of government
+Expected output: Montevideo, Spanish, 18th century, military stronghold, Uruguay, independence, Spain, Argentina, Brazil, constitutional democracy, head of state, head of government.
+
+Input: An open cross-over study of 20 patients with Parkinson's disease performed with two drugs containing L-dopa and a peripheral aromatic amino acid decarboxylase inhibitor (benserazide, carbidopa) confirmed the conclusions reached in other clinical trials that this combined treatment of Parkinson's disease is the most effective form of drug therapy available at present. With both drugs, Madopar or Sinemet, an optimum therapeutic result was obtained with relatively small doses of L-dopa (the reduction in L-dopa dosage amounting to about 80%). A loss of efficacy with both drugs, which has observed during long-term treatment of patients with Parkinson's disease, could be avoided by switching the patients from Sinemet to Madopar and vice versa. Determination of L-dopa in the plasma demonstrated that with either drug similar plasma levels of L-dopa were achieved during clinically effective treatment.
+Expected output: Parkinson's disease, L-dopa, peripheral aromatic amino acid decarboxylase inhibitor, benserazide, carbidopa, Madopar, Sinemet, drug therapy, plasma levels, clinical trials, therapeutic result, long-term treatment, plasma levels, clinically effective treatment.
+End of guidelines.
+
+Now it is your turn to provide topics for the given text.
+Input: {placeholder}

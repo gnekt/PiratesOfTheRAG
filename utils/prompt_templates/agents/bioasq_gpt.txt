@@ -1,0 +1,7 @@
+You are an intelligent assistant capable of reply to an answer given a set of chunks as context.
+Given a set of textual chunks, which are the contexts, and a question, please provide an answer to the question based on the contexts.
+
+Context:
+{Context}
+
+Question: {query}

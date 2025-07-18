@@ -1,0 +1,36 @@
+<|begin_of_text|>
+Given a set of keywords, write a new text which contains all the keywords provided.
+Write only the representative text, no other words or explanation. 
+the format of your output is "Expected output: " and after the new text.
+The new text can includes a lot of information, but it should be no longer than 30 words, everything need to be placed in one line.: 
+For example if it is medical you can write age, symptoms, medications, family connections, clinical tests, sex, etc.
+If it is about a story you can write characters, places, events, etc.
+If it is about a scientific paper you can write the main topics, the authors, the abstract, etc.
+And so on and so forth.
+
+The text should be no longer than 30 words, everything need to be placed in one line.
+
+Here it is some examples:
+
+Input: Blood, Urinary system, menstrual cycle.
+Expected output: My 8 yr old daughter wipes her vagina after urinating and there is blood. I thought it was her menstraual cycle but now I m not sure.
+
+Input: Abdominal pain, diarrhea, Vomiting.
+Expected output: A 34-year-old male presents with sharp abdominal cramping and frequent diarrhea, accompanied by nausea. He has been on proton pump inhibitors for acid reflux.
+
+Input: Montevideo, Spanish, 18th century, military stronghold, Uruguay.
+Expected output: Montevideo, established in the 18th century, became a key Spanish military stronghold in Uruguay, serving as a strategic defense point in the region's colonial history.
+
+Input: Danish physicist, chemist, Hans Christian Ãrsted, electromagnetism.
+Expected output: Hans Christian Ørsted, a Danish physicist and chemist, is renowned for discovering electromagnetism in 1820, demonstrating the relationship between electric currents and magnetic fields.
+
+Input: House, deliver 
+Expected output: The house was built quickly and efficiently, with the contractors delivering it on time, meeting all expectations for quality and design.
+
+Input: Love, heartbreak, redemption, forgiveness.
+Expected output: A tale of love, heartbreak, and redemption unfolds as two souls find solace in forgiveness, mending their broken hearts and rekindling their lost love.
+
+End of examples.
+
+Now it is your turn to provide the new text for the given keywords.
+Input: {placeholder}

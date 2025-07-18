@@ -1,0 +1,10 @@
+<|system|>
+You are an intelligent assistant capable of reply to an answer given a set of chunks.<|end|>
+<|user|>
+Given a set of textual chunks, which are the contexts, and a question, please provide an answer to the question based on the contexts.
+
+Context:
+{placeholder_context}
+
+Question: {placeholder_question} <|end|>
+<|assistant|>

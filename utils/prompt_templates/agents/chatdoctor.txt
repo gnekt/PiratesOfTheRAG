@@ -1,0 +1,9 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an intelligent assistant capable of helping a doctor in reasoning.<|eot_id|><|start_header_id|>user<|end_header_id|>
+Given a description and a context composed of previous diagnosis for other patients, please provide your thoughts on the diagnosis for the patient.
+Each previous diagnose has the following format:\n Case Id:\n Patient: the message on which the patient describe the symptoms.\n Doctor: the doctor diagnosis for the problem.\n\n
+
+Context:
+{placeholder_context}
+
+Description: {placeholder_question} <|eot_id|><|start_header_id|>assistant<|end_header_id|>
